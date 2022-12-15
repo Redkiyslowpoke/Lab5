@@ -1,0 +1,24 @@
+import random
+
+class Dice:
+    def __init__(self, gran = 6, bros = 1, seed = None):
+        self.gran = gran
+        self.bros = bros
+        random.seed(seed)
+        self.state = random.getstate()
+    def roll(self):
+        random.setstate(self.state)
+        rez = []
+        for _ in range(self.bros):
+            rez.append(random.randrange(1,self.gran+1))
+        self.state = random.getstate()
+        return rez
+
+stat =dict.fromkeys('2 3 4 5 6 7 8 9 10 11 12'.split(),0)
+s = Dice(bros = 2)
+for _ in range(200000):
+    rl = s.roll()
+    sum = rl[0]+rl[1]
+    stat[str(sum)] += 1
+for i in stat:
+    print(str(i).ljust(2),":",stat[i]/2000,"%")
