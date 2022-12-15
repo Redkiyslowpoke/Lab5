@@ -1,0 +1,19 @@
+import secrets
+
+class Password:
+    def __init__(self, *args):
+        self.slov = args
+    def dopar(self, dlin = 3):
+        par = []
+        nom = 0
+        for _ in range(dlin):
+            if nom > len(self.slov)-1: ####Гарантирует первые - из всех, а дальше рандом
+                par += "".join(str(secrets.choice(self.slov[secrets.randbelow(len(self.slov))]))) 
+                #nom = 0    — для повторного прохода по словарям
+            else:
+                par += "".join(str(secrets.choice(self.slov[nom]))) 
+                nom += 1
+        rez = "".join(par)
+        return rez
+    
+print(Password('АБВ',[4,5,6],('j','g','o'),'<>/').dopar(12))
