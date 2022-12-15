@@ -1,0 +1,21 @@
+import random
+
+class Dice:
+    def __init__(self, gran = 6, bros = 1, seed = None):
+        self.gran = gran
+        self.bros = bros
+        random.seed(seed)
+        self.state = random.getstate()
+    def roll(self):
+        random.setstate(self.state)
+        rez = []
+        for _ in range(self.bros):
+            rez.append(random.randrange(1,self.gran+1))
+        self.state = random.getstate()
+        return rez
+        
+d1 = Dice(seed=999)
+d2 = Dice(seed=999)
+print(*d1.roll(), *d2.roll())
+print(*d1.roll(), *d2.roll())
+print(*d1.roll(), *d2.roll())
