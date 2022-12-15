@@ -1,0 +1,15 @@
+import random
+
+class Dice:
+    def __init__(self, gran = 6, bros = 1):
+        self.gran = gran
+        self.bros = bros
+    def roll(self):
+        rez = []
+        for _ in range(self.bros):
+            rez.append(random.randrange(1,self.gran+1))
+        return rez
+    
+st = int(input("Введите кол-во сторон: "))
+kl = int(input("Введите кол-во костей: "))
+print(Dice(st,kl).roll())
