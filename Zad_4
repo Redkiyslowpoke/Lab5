@@ -1,0 +1,10 @@
+import random
+import string
+
+def CoolName(dlin = 3, rach = 'txt'):
+    name = string.ascii_letters
+    return "".join(random.choices(name,k=dlin))+"."+rach
+
+print(CoolName())
+print(CoolName(12))
+print(CoolName(17,'zip'))
